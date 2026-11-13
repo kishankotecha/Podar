@@ -29,7 +29,6 @@ const sectionVars = {
   "--ele-w": "clamp(96px, 8.6vw, 170px)",
 } as CSSProperties;
 
-
 const elephantStyle: CSSProperties = {
   width: "var(--ele-w)",
   transform: "translateY(-100%)",
@@ -169,14 +168,15 @@ function HeroImage() {
   );
 }
 
-// Cards are as wide as their content and wrap onto the next row (as in Figma).
+// Cards are exactly as wide as their content and wrap onto the next row (as in Figma).
+// Below lg: centered (original). lg and up: left-aligned, titles on one line.
 function FeatureList() {
   return (
-    <ul className="mt-[clamp(24px,4.3vw,82px)] flex w-full flex-wrap justify-center gap-x-[clamp(10px,0.94vw,18px)] gap-y-[clamp(10px,1.15vw,22px)] lg:grid lg:grid-cols-[repeat(3,auto)] lg:justify-start">
+    <ul className="mt-[clamp(24px,4.3vw,82px)] flex w-full flex-wrap justify-center gap-x-[clamp(10px,0.94vw,18px)] gap-y-[clamp(10px,1.15vw,22px)] lg:justify-start">
       {WHERE_IT_BEGINS_FEATURES.map((feature) => (
         <li
           key={feature.title}
-          className="flex items-center gap-[clamp(6px,0.52vw,10px)] rounded-2xl border border-[#D8E5F4] bg-white py-[clamp(8px,0.73vw,14px)] pl-[clamp(10px,0.9vw,17px)] pr-[clamp(12px,1.2vw,23px)] text-left"
+          className="flex w-fit items-center gap-[clamp(6px,0.52vw,10px)] rounded-2xl border border-[#D8E5F4] bg-white py-[clamp(8px,0.73vw,14px)] pl-[clamp(10px,0.9vw,17px)] pr-[clamp(12px,1.2vw,23px)] text-left"
         >
           <span className="flex h-[clamp(24px,1.57vw,30px)] w-[clamp(24px,1.57vw,30px)] shrink-0 items-center justify-center rounded-full bg-[#E6F1FF]">
             <Image
@@ -189,7 +189,7 @@ function FeatureList() {
           </span>
           <span
             style={nunito}
-            className="whitespace-nowrap text-[clamp(14px,0.94vw,18px)] lg:whitespace-normal font-semibold leading-tight text-[#2C6DC2]"
+            className="whitespace-nowrap text-[clamp(14px,0.94vw,18px)] font-bold leading-tight text-[#2C6DC2]"
           >
             {feature.title}
           </span>
@@ -214,19 +214,17 @@ export default function WhereItBegins() {
       <FloatingElephant />
 
       <div className="relative z-10 w-full">
-        
         <div
           aria-hidden="true"
           className="h-[calc(var(--wave-h)+clamp(2.5rem,4.6vw,6rem))]"
         />
 
-       
         <div className="flex flex-col items-center gap-12 lg:flex-row lg:justify-center lg:gap-[clamp(48px,10.4vw,200px)]">
           {/* LEFT: image */}
           <HeroImage />
 
-          {/* RIGHT: text. 680px wide at 1910px (Figma). */}
-          <div className="mx-auto w-full max-w-[34rem] text-center lg:mx-0 lg:w-[clamp(460px,35.6vw,700px)] lg:max-w-none lg:shrink-0 lg:text-left">
+          {/* RIGHT: text. ~680-700px wide at 1910px (Figma). */}
+          <div className="mx-auto w-full max-w-[34rem] text-center lg:mx-0 lg:w-[clamp(540px,37vw,720px)] lg:max-w-none lg:shrink-0 lg:text-left">
             <span
               style={nunito}
               className="inline-flex items-center gap-1.5 rounded-full border border-[#FFD1A7] bg-[#FFF4EA] px-3.5 py-1 text-[clamp(11px,0.58vw,12px)] font-bold uppercase tracking-wide text-[#20487D]"
