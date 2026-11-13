@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { SectionHeader } from "@/src/components/ui/SectionHeader";
-import { BreathingMascot } from "@/src/components/ui/BreathingMascot";
 import { TestimonialCarousel } from "./TestimonialCarousel";
 import { TESTIMONIALS } from "./data";
 
@@ -72,9 +71,6 @@ export function TestimonialsSection() {
         </div>
       </div>
 
-      {/* Mascot – overlaps into the next section, so the section must not clip it */}
-      {/* Anchored to the bottom so it always straddles the section edge (Figma: hangs 149px below) */}
-      <BreathingMascot className="absolute -bottom-[4.5rem] left-[4%] z-10 w-[5.5rem] -rotate-[5.83deg] md:-bottom-[6.5rem] md:left-[5%] md:w-[8rem] xl:-bottom-[9.3rem] xl:left-[8.2%] xl:w-[11rem]" />
     </section>
   );
 }
