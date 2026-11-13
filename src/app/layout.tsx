@@ -11,8 +11,9 @@ import {
 import { Navbar, Footer } from "@/shared/components";
 
 export const metadata: Metadata = {
-  title: "Podar Prep | JP Nagar 7th Phase",
-  description: "Podar Prep Preschool",
+  title: "Podar Prep | Because the first 6 years prepare your child for life",
+  description:
+    "A joyful, safe and purposeful preschool where children learn through play, grow with confidence, and build the foundations for a bright future.",
 };
 
 const fontVariables = [
