@@ -24,21 +24,18 @@ const WAVE_VIEWBOX = "0 0 1920 104";
 const WAVE_PATH =
   "M0,101 C150,94 400,43 640,43 C940,43 1060,98 1236,98 C1420,98 1560,46 1750,46 C1820,46 1880,52 1920,63 L1920,105 L0,105 Z";
 const WAVE_COLOR_CLASS = "fill-[#2B4A7C]";
+const WAVE_BG = "#FFF8E6";
 /* ------------------------------------------------------------------------- */
 
-interface FooterProps {
-  /** Tailwind bg class of the section ABOVE the footer, so the wave blends in perfectly */
-  waveBg?: string;
-}
-
-export const Footer: React.FC<FooterProps> = ({ waveBg = "bg-[#FFF8E6]" }) => {
+export const Footer: React.FC = () => {
   return (
     <>
-      {/* Wave: same colour as the section above, flowing into the navy footer.
+      {/* Wave: cream background (#FFF8E6) flowing into the navy footer.
           On small screens the SVG keeps a 900px minimum width and is centred, so
           the curve stays soft instead of being squashed. */}
       <div
-        className={`relative w-full overflow-hidden leading-[0] ${waveBg}`}
+        style={{ backgroundColor: WAVE_BG }}
+        className="relative w-full overflow-hidden leading-[0]"
         aria-hidden="true"
       >
         <svg
