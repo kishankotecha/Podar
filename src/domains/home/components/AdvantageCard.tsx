@@ -1,8 +1,8 @@
 import type { CSSProperties } from "react";
 import Image from "next/image";
-import { cn } from "@/src/lib/utils";
-import { fredoka, nunito } from "@/src/lib/fonts";
-import type { Advantage, AdvantageTheme } from "./data";
+import { cn } from "@/lib/utils";
+import { fredoka, nunito } from "@/lib/fonts";
+import type { Advantage, AdvantageTheme } from "../constants/advantage";
 
 const THEMES: Record<
   AdvantageTheme,

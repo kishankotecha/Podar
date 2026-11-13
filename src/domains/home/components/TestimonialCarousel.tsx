@@ -2,9 +2,9 @@
 
 import { useRef, useState, type KeyboardEvent, type PointerEvent, type ReactNode } from "react";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import { cn } from "@/src/lib/utils";
+import { cn } from "@/lib/utils";
 import { TestimonialCard } from "./TestimonialCard";
-import type { Testimonial } from "./data";
+import type { Testimonial } from "../constants/testimonials";
 
 const SWIPE_THRESHOLD = 50;
 

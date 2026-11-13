@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { SectionHeader } from "@/src/components/ui/SectionHeader";
+import { SectionHeader } from "@/shared/components";
 import { TestimonialCarousel } from "./TestimonialCarousel";
-import { TESTIMONIALS } from "./data";
+import { TESTIMONIALS } from "../constants/testimonials";
 
 export function TestimonialsSection() {
   return (

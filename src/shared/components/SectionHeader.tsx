@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
-import { cn } from "@/src/lib/utils";
-import { fredoka, nunito } from "@/src/lib/fonts";
+import { cn } from "@/lib/utils";
+import { fredoka, nunito } from "@/lib/fonts";
 
 type BadgeVariant = "blue" | "pink";
 

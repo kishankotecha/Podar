@@ -1,8 +1,8 @@
 import PodarPrepExperience from "../domains/home/components/podarPrepExperiance";
 import WhereItBegins from "../domains/home/components/WhereItBegins";
 import { ChildExperiences } from "@/shared/components";
-import { AdvantageSection } from "@/src/components/home/advantage/AdvantageSection";
-import { TestimonialsSection } from "@/src/components/home/testimonials/TestimonialsSection";
+import { AdvantageSection } from "../domains/home/components/AdvantageSection";
+import { TestimonialsSection } from "../domains/home/components/TestimonialsSection";
 
 export default function Home() {
   return (

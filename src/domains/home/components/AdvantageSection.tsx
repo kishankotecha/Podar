@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { SectionHeader } from "@/src/components/ui/SectionHeader";
+import { SectionHeader } from "@/shared/components";
 import { AdvantageCard } from "./AdvantageCard";
-import { ADVANTAGES } from "./data";
+import { ADVANTAGES } from "../constants/advantage";
 
 export function AdvantageSection() {
   return (

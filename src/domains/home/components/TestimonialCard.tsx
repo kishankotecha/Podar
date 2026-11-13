@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { FaStar } from "react-icons/fa";
 import { RiDoubleQuotesR } from "react-icons/ri";
-import { cn } from "@/src/lib/utils";
-import { nunito } from "@/src/lib/fonts";
-import type { Testimonial } from "./data";
+import { cn } from "@/lib/utils";
+import { nunito } from "@/lib/fonts";
+import type { Testimonial } from "../constants/testimonials";
 
 type TestimonialCardProps = {
   item: Testimonial;
