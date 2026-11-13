@@ -45,11 +45,11 @@ export function TestimonialsSection() {
           className="absolute bottom-[9rem] left-[6%] h-auto w-8 md:w-12 lg:left-[3%] lg:w-16 xl:bottom-auto xl:left-[6.9%] xl:top-[47.5%] xl:w-[5.5rem]"
         />
         <Image
-          src="/images/podar/balloon-figma.png"
+          src="/images/podar/balloon-string.png"
           alt=""
-          width={262}
-          height={349}
-          className="absolute bottom-[3rem] right-[5%] h-auto w-[3.5rem] md:bottom-[3.5rem] md:w-[5rem] lg:w-[6rem] xl:bottom-auto xl:left-[89%] xl:right-auto xl:top-[59.8%] xl:w-[8.2rem]"
+          width={236}
+          height={378}
+          className="absolute -right-2 bottom-0 h-auto w-[5rem] md:-right-3 md:w-[7rem] lg:w-[7.5rem] xl:-right-6 xl:bottom-auto xl:top-[59.8%] xl:w-[14.75rem]"
         />
       </div>
 
