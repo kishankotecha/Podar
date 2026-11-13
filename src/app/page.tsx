@@ -1,9 +1,11 @@
+import { AdvantageSection } from "@/src/components/home/advantage/AdvantageSection";
+import { TestimonialsSection } from "@/src/components/home/testimonials/TestimonialsSection";
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen items-center justify-center bg-white">
-      <h1 className="text-6xl font-bold text-orange-500 font-fredoka-expanded">
-        Welcome to Podar
-      </h1>
+    <main className="flex min-h-screen flex-col bg-white">
+      <AdvantageSection />
+      <TestimonialsSection />
     </main>
   );
 }
