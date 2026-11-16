@@ -17,7 +17,7 @@ export const HERO = {
    * Independent top/bottom spacing (in artboard-px at 1920-wide).
    * Tweak these two numbers to control the gap above/below hero content.
    */
-  padding: { top: 30, bottom: 30 },
+  padding: { top: 100, bottom: 40 },
 
   /** Absolute frames relative to the content-area origin (0,0). */
   frames: {
@@ -86,8 +86,8 @@ export const HERO = {
     starUnderForm: {
       left: 1509.88,
       top: 938.94,
-      width: 26.12,
-      height: 26.12,
+      width: 19.59,
+      height: 20.14,
       src: ASSETS.star,
       tone: "white" as const,
     },
