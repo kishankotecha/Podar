@@ -25,7 +25,7 @@ export const TESTIMONIALS: Testimonial[] = [
       "The story-based learning has made our son so curious. Every evening he comes home with a new question and a new story to tell us.",
     name: "Rahul Mehta",
     childInfo: "Vihaan, Nursery",
-    avatar: "/images/podar/priya-sharma.png",
+    avatar: "/images/podar/mother_daughter_1_48x48.png",
     rating: 5,
   },
   {
@@ -34,7 +34,7 @@ export const TESTIMONIALS: Testimonial[] = [
       "We love how involved the teachers keep us. The regular updates and parent activities make us feel part of our child's learning journey.",
     name: "Ananya Iyer",
     childInfo: "Myra, Junior KG",
-    avatar: "/images/podar/priya-sharma.png",
+    avatar: "/images/podar/mother_daughter_2_48x48.png",
     rating: 5,
   },
 ];
