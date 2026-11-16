@@ -73,11 +73,11 @@ export const ChildExperiences: React.FC = () => {
     <section
       id="gallery"
       aria-labelledby="experiences-heading"
-      className="relative w-full bg-gradient-to-b from-[#F3F8EC] via-white to-white font-nunito"
+      className="relative w-full bg-gradient-to-b from-[#F3F8EC] via-white to-white font-nunito scroll-mt-16 lg:scroll-mt-24"
     >
       <Decorations />
 
-      <div className="relative z-10 mx-auto max-w-[1920px] px-5 pb-14 pt-12 sm:px-8 sm:pb-16 sm:pt-14 md:px-10 lg:px-[clamp(40px,6.1vw,118px)] lg:pb-[clamp(56px,4.2vw,80px)] lg:pt-[clamp(56px,7.3vw,140px)]">
+      <div className="relative z-10 mx-auto max-w-[1920px] px-5 lg:pb-14 pt-12 sm:px-8 sm:pb-16 sm:pt-14 md:px-10 lg:px-[clamp(40px,6.1vw,118px)] lg:pb-[clamp(56px,4.2vw,80px)] lg:pt-[clamp(56px,7.3vw,140px)]">
         {/* Heading */}
         <div className="mx-auto flex max-w-[560px] flex-col items-center text-center lg:max-w-[560px]">
           <span className="inline-flex items-center gap-1.5 rounded-full border border-[#CFE3B8] bg-[#F4FAEC] px-3.5 py-1 text-[10px] font-bold uppercase leading-snug tracking-wide text-[#5E7F8F]">

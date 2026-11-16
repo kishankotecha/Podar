@@ -6,8 +6,9 @@ import { ADVANTAGES } from "../constants/advantage";
 export function AdvantageSection() {
   return (
     <section
+      id="why-podar"
       aria-labelledby="advantage-title"
-      className="relative overflow-x-clip bg-white py-20 lg:py-[7.5rem]"
+      className="relative overflow-x-clip bg-white py-20 lg:py-[7.5rem] scroll-mt-16 lg:scroll-mt-24"
     >
       {/* Decorations – shown on all screens, scaled down on smaller ones */}
       <div aria-hidden className="pointer-events-none absolute inset-0">
