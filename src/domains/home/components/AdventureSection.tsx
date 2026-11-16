@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import type { CSSProperties } from "react";
 import { ScaledArtboard } from "@/shared/ui/ScaledArtboard";
 import {
   ADVENTURE,
@@ -11,27 +10,11 @@ import {
 import { cn } from "@/lib/utils";
 import { scrollToLeadForm } from "@/domains/home/utils/scroll";
 
-const { content, assets, frames, artboard, desktop, fluid, padding, dots, colors } =
+const { content, assets, frameClass, artboard, desktop, fluid, dotsClass } =
   ADVENTURE;
 
-const ctaBaseClass =
-  "inline-flex items-center justify-center gap-2.5 rounded-full bg-podar-yellow font-nunito font-bold shadow-[0px_8px_24px_-6px_rgba(248,214,79,0.45)] transition hover:brightness-95";
-
 function PanelDots() {
-  return (
-    <div
-      aria-hidden
-      className="pointer-events-none absolute inset-0"
-      style={{
-        opacity: dots.opacity,
-        backgroundImage:
-          "radial-gradient(circle, rgba(255,255,255,0.75) 1.15px, transparent 1.35px)",
-        backgroundSize: `${dots.size}px ${dots.size}px`,
-        maskImage:
-          "radial-gradient(ellipse 55% 55% at 50% 36%, black 18%, transparent 70%)",
-      }}
-    />
-  );
+  return <div aria-hidden className={dotsClass} />;
 }
 
 function CtaArrow() {
@@ -61,7 +44,6 @@ function EnquireCta({ variant }: { variant: "desktop" | "fluid" }) {
         href="#hero-lead-form-mobile"
         onClick={scrollToLeadForm}
         className={fluid.ctaClass}
-        style={{ color: colors.ctaText }}
       >
         {content.cta}
         <CtaArrow />
@@ -73,14 +55,7 @@ function EnquireCta({ variant }: { variant: "desktop" | "fluid" }) {
     <Link
       href="#hero-lead-form-desktop"
       onClick={scrollToLeadForm}
-      className={ctaBaseClass}
-      style={{
-        color: colors.ctaText,
-        height: desktop.cta.height,
-        fontSize: desktop.cta.fontSize,
-        paddingLeft: desktop.cta.paddingX,
-        paddingRight: desktop.cta.paddingX,
-      }}
+      className={desktop.ctaClass}
     >
       {content.cta}
       <CtaArrow />
@@ -99,24 +74,17 @@ function AdventureBadge({ compact = false }: { compact?: boolean }) {
       <Image
         src={assets.badgeStar.src}
         alt=""
-        width={compact ? 14 : desktop.badge.starW}
-        height={compact ? 13 : desktop.badge.starH}
+        width={compact ? 14 : desktop.badgeStar.width}
+        height={compact ? 13 : desktop.badgeStar.height}
         className={cn("w-auto shrink-0", compact ? "h-3.5" : "h-4")}
       />
       <span
         className={cn(
           "truncate font-nunito font-extrabold",
-          compact && "text-[10px] tracking-[0.06em] sm:text-[11px]",
-        )}
-        style={
           compact
-            ? { color: colors.badgeText }
-            : {
-                color: colors.badgeText,
-                fontSize: desktop.badge.fontSize,
-                letterSpacing: desktop.badge.tracking,
-              }
-        }
+            ? "text-[10px] tracking-[0.06em] text-podar-accent sm:text-[11px]"
+            : desktop.badgeClass,
+        )}
       >
         {content.badge}
       </span>
@@ -130,23 +98,14 @@ function AdventureHeadline({ className }: { className?: string }) {
       className={cn("font-fredoka font-bold uppercase text-white", className)}
     >
       {content.headlineBefore}{" "}
-      <span style={{ color: colors.accent }}>{content.headlineAccent}</span>
+      <span className="text-podar-accent">{content.headlineAccent}</span>
     </h2>
   );
 }
 
-function AdventureSubhead({
-  className,
-  style,
-}: {
-  className?: string;
-  style?: CSSProperties;
-}) {
+function AdventureSubhead({ className }: { className?: string }) {
   return (
-    <p
-      className={cn("font-nunito font-medium", className)}
-      style={{ color: colors.subhead, ...style }}
-    >
+    <p className={cn("font-nunito font-medium", className)}>
       {content.subhead}
     </p>
   );
@@ -155,144 +114,94 @@ function AdventureSubhead({
 function Prop({
   asset,
   alt = "",
-  frame,
+  frameClassName,
   className,
   priority,
   objectFit = "contain",
 }: {
   asset: AdventureAsset;
   alt?: string;
-  frame: { left: number; top: number; width: number; height?: number };
+  frameClassName: string;
   className?: string;
   priority?: boolean;
   objectFit?: "contain" | "fill" | "cover";
 }) {
   return (
-    <div
-      className={cn("absolute", className)}
-      style={{
-        left: frame.left,
-        top: frame.top,
-        width: frame.width,
-        height: frame.height,
-      }}
-    >
+    <div className={cn(frameClassName, className)}>
       <Image
         src={asset.src}
         alt={alt}
         width={asset.width}
         height={asset.height}
-        className={cn("w-full select-none", frame.height ? "h-full" : "h-auto")}
-        style={{ objectFit, objectPosition: "bottom center" }}
+        className={cn(
+          "w-full select-none object-bottom",
+          objectFit === "fill"
+            ? "h-full object-fill"
+            : objectFit === "cover"
+              ? "h-full object-cover"
+              : "h-auto object-contain",
+        )}
         priority={priority}
       />
     </div>
   );
 }
 
-/** Locked 1920 composition — scales proportionally at lg+. */
+/** Desktop artboard — proportional scale at lg+. */
 function AdventureDesktop() {
-  const p = frames.panel;
-
   return (
     <ScaledArtboard width={artboard.width} height={artboard.height}>
-      <Prop
-        asset={assets.rainbow}
-        frame={frames.rainbow}
-        className="z-10 opacity-75"
-      />
-      <Prop
-        asset={assets.moon}
-        frame={frames.moon}
-        className="z-10 opacity-90"
-      />
-      <Prop
-        asset={assets.birds}
-        frame={frames.birds}
-        className="z-10 opacity-80"
-      />
-      <Prop asset={assets.ufo} frame={frames.ufo} className="z-10 opacity-70" />
+      <Prop asset={assets.rainbow} frameClassName={frameClass.rainbow} />
+      <Prop asset={assets.moon} frameClassName={frameClass.moon} />
+      <Prop asset={assets.birds} frameClassName={frameClass.birds} />
+      <Prop asset={assets.ufo} frameClassName={frameClass.ufo} />
 
-      <div
-        className="absolute z-20 overflow-hidden bg-podar-blue shadow-[0_24px_60px_-28px_rgba(6,41,83,0.35)]"
-        style={{
-          left: p.left,
-          top: p.top,
-          width: p.width,
-          height: p.height,
-          borderRadius: p.radius,
-        }}
-      >
+      <div className={frameClass.panel}>
         <PanelDots />
         <Prop
           asset={assets.cloudFloor}
-          frame={frames.cloudFloor}
-          className="z-10"
+          frameClassName={frameClass.cloudFloor}
           objectFit="fill"
         />
       </div>
 
-      <div
-        className="absolute z-40"
-        style={{
-          left: frames.copy.left,
-          top: p.top + frames.copy.top,
-          width: frames.copy.width,
-        }}
-      >
+      <div className={frameClass.copy}>
         <div className="relative z-20 flex w-full flex-col items-center text-center">
           <AdventureBadge />
           <AdventureHeadline className={desktop.headlineClass} />
-          <AdventureSubhead
-            className="mt-4 leading-[1.7]"
-            style={{
-              fontSize: desktop.subhead.size,
-              maxWidth: desktop.subhead.maxWidth,
-            }}
-          />
+          <AdventureSubhead className={desktop.subheadClass} />
         </div>
       </div>
 
-      <div
-        className="absolute z-40 flex justify-center"
-        style={{
-          left: frames.copy.left,
-          top: p.top + frames.cta.top,
-          width: frames.copy.width,
-        }}
-      >
+      <div className={frameClass.cta}>
         <EnquireCta variant="desktop" />
       </div>
 
       <Prop
         asset={assets.leftProps}
         alt={content.leftPropsAlt}
-        frame={frames.leftProps}
-        className="z-40"
+        frameClassName={frameClass.leftProps}
         priority
       />
       <Prop
         asset={assets.rightProps}
         alt={content.rightPropsAlt}
-        frame={frames.rightProps}
-        className="z-40"
+        frameClassName={frameClass.rightProps}
       />
       <Prop
         asset={assets.elephant}
         alt={content.elephantAlt}
-        frame={frames.elephant}
-        className="z-50"
+        frameClassName={frameClass.elephant}
         priority
       />
     </ScaledArtboard>
   );
 }
 
-/** Fluid layout below lg — cream margins hold doodles; blue card stays inset. */
+/** Fluid layout below lg. */
 function AdventureFluid() {
   return (
     <div className={fluid.shellClass}>
-      {/* Cream-margin doodles: tucked off edges like PodarPrep / WhereItBegins */}
       <Image
         src={assets.rainbow.src}
         alt=""
@@ -319,7 +228,6 @@ function AdventureFluid() {
         <div className={fluid.panelClass}>
           <PanelDots />
 
-          {/* Tablet+: side props at top of blue card */}
           <Image
             src={assets.leftProps.src}
             alt=""
@@ -350,7 +258,6 @@ function AdventureFluid() {
               height={assets.cloudFloor.height}
               className={fluid.cloudClass}
             />
-            {/* Mobile only: left props stay in the bottom scene */}
             <Image
               src={assets.leftProps.src}
               alt=""
@@ -361,7 +268,6 @@ function AdventureFluid() {
           </div>
         </div>
 
-        {/* Outside overflow clip so it can hang past the bottom border */}
         <Image
           src={assets.elephant.src}
           alt=""
@@ -387,10 +293,6 @@ export function AdventureSection() {
     <section
       id="admissions"
       className="relative w-full overflow-hidden bg-podar-cream scroll-mt-16 lg:scroll-mt-24"
-      style={{
-        paddingTop: padding.top,
-        paddingBottom: padding.bottom,
-      }}
     >
       <AdventureDesktop />
       <AdventureFluid />

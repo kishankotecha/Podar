@@ -14,17 +14,22 @@ export const HERO = {
   artboard: { width: 1920, contentHeight: 965 },
 
   /**
-   * Independent top/bottom spacing (in artboard-px at 1920-wide).
-   * Tweak these two numbers to control the gap above/below hero content.
+   * Top/bottom spacing in artboard pixels.
+   * Numeric values size the stage; topClass offsets the content layer.
    */
-  padding: { top: 100, bottom: 40 },
+  padding: {
+    top: 100,
+    bottom: 40,
+    /** Keep in sync with padding.top (100px → 6.25rem). */
+    topClass: "top-[6.25rem]",
+  },
 
-  /** Absolute frames relative to the content-area origin (0,0). */
-  frames: {
-    copy: { left: 120, top: 117, width: 603 },
-    form: { left: 1248, top: 94, width: 540, height: 722 },
-    girl: { left: 860, top: 103, width: 338 },
-    boy: { left: 660, top: 336, width: 620 },
+  /** Absolute frames on the content origin — full class literals for the scanner. */
+  frameClass: {
+    copy: "absolute z-20 left-[7.5rem] top-[7.3125rem] w-[37.6875rem]",
+    form: "absolute z-30 left-[78rem] top-[5.875rem] w-[33.75rem]",
+    girl: "absolute z-20 left-[53.75rem] top-[6.4375rem] w-[21.125rem]",
+    boy: "absolute z-[15] left-[41.25rem] top-[21rem] w-[38.75rem]",
   },
 
   content: {
@@ -55,41 +60,39 @@ export const HERO = {
 
   decor: {
     heart: {
-      left: 831,
-      top: 86,
       width: 26.12,
       height: 23.95,
       src: ASSETS.heart,
+      frameClass:
+        "pointer-events-none absolute left-[51.9375rem] top-[5.375rem] h-[1.496875rem] w-[1.6325rem] select-none",
     },
     cap: {
-      left: 1122,
-      top: 0,
       width: 99,
       height: 84,
-      rotate: -17.56,
       src: ASSETS.cap,
+      frameClass:
+        "pointer-events-none absolute left-[70.125rem] top-0 h-[5.25rem] w-[6.1875rem] -rotate-[17.56deg] select-none",
     },
     cloudA: {
-      left: 1721.21,
-      top: 6.03,
       width: 83.59,
       height: 50.16,
       src: ASSETS.cloud,
+      frameClass:
+        "pointer-events-none absolute left-[107.575625rem] top-[0.376875rem] h-[3.135rem] w-[5.224375rem] select-none opacity-90",
     },
     cloudB: {
-      left: 840,
-      top: 747,
       width: 83.59,
       height: 50.16,
       src: ASSETS.cloud,
+      frameClass:
+        "pointer-events-none absolute left-[52.5rem] top-[46.6875rem] h-[3.135rem] w-[5.224375rem] select-none opacity-80",
     },
     starUnderForm: {
-      left: 1509.88,
-      top: 938.94,
       width: 19.59,
       height: 20.14,
       src: ASSETS.star,
-      tone: "white" as const,
+      frameClass:
+        "pointer-events-none absolute left-[94.3675rem] top-[58.68375rem] h-[1.25875rem] w-[1.224375rem] select-none opacity-40",
     },
   },
 

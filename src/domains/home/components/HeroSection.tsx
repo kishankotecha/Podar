@@ -8,7 +8,7 @@ import { HeroArtboard } from "@/domains/home/components/HeroArtboard";
 import { HERO } from "@/domains/home/constants/hero";
 import { scrollToLeadForm } from "@/domains/home/utils/scroll";
 
-const { content, assets, frames } = HERO;
+const { content, assets, frameClass } = HERO;
 
 function HeroCopy() {
   return (
@@ -78,25 +78,11 @@ function HeroDesktop() {
     <HeroArtboard>
       <HeroDecor />
 
-      <div
-        className="absolute z-20"
-        style={{
-          left: frames.copy.left,
-          top: frames.copy.top,
-          width: frames.copy.width,
-        }}
-      >
+      <div className={frameClass.copy}>
         <HeroCopy />
       </div>
 
-      <div
-        className="absolute z-[15]"
-        style={{
-          left: frames.boy.left,
-          top: frames.boy.top,
-          width: frames.boy.width,
-        }}
-      >
+      <div className={frameClass.boy}>
         <Image
           src={assets.boy}
           alt={content.boyAlt}
@@ -108,14 +94,7 @@ function HeroDesktop() {
         />
       </div>
 
-      <div
-        className="absolute z-20"
-        style={{
-          left: frames.girl.left,
-          top: frames.girl.top,
-          width: frames.girl.width,
-        }}
-      >
+      <div className={frameClass.girl}>
         <Image
           src={assets.girl}
           alt={content.girlAlt}
@@ -127,15 +106,7 @@ function HeroDesktop() {
         />
       </div>
 
-      <div
-        id="hero-lead-form-desktop"
-        className="absolute z-30"
-        style={{
-          left: frames.form.left,
-          top: frames.form.top,
-          width: frames.form.width,
-        }}
-      >
+      <div id="hero-lead-form-desktop" className={frameClass.form}>
         <HeroLeadForm />
       </div>
     </HeroArtboard>
@@ -174,10 +145,7 @@ function HeroMobile() {
         </p>
       </div>
 
-      {/*
-        Both PNGs include baked-in doodles. Overlap them so we don't get two
-        caps / star clusters stacked with a big gap between photos.
-      */}
+      {/* Overlap the pair so decorative details in each asset do not stack with a gap. */}
       <div className="relative mx-auto w-full max-w-md md:max-w-lg">
         <Image
           src={assets.girl}

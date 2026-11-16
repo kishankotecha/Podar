@@ -13,74 +13,45 @@ const ASSETS = {
 export type AdventureAsset = (typeof ASSETS)[keyof typeof ASSETS];
 
 /**
- * Cream CTA band — Figma Rectangle 19 (1920×1045).
- * Desktop locks to ScaledArtboard; fluid layout handles viewports below lg.
+ * Admissions CTA band layout, assets, and copy.
+ * Desktop uses a fixed artboard scaled to width; fluid layout covers below lg.
  */
 export const ADVENTURE = {
   assets: ASSETS,
 
   artboard: { width: 1920, height: 1045 },
 
-  /** Section outer padding (cream band). Desktop artboard owns its own space. */
-  padding: {
-    top: 0,
-    bottom: 0,
-  },
-
-  /** Exact Figma colors — do not swap for nearby brand tokens. */
-  colors: {
-    accent: "#FFDF87",
-    ctaText: "#2C6DC1",
-    subhead: "#D2D2D2",
-    badgeText: "#FFDF87",
-  },
-
-  dots: {
-    opacity: 0.16,
-    size: 26,
-  },
-
-  /** Absolute frames on the 1920×1045 artboard (desktop only). */
-  frames: {
-    panel: { left: 120, top: 200, width: 1680, height: 620, radius: 48 },
-    /** Panel-relative: badge + headline + subhead */
-    copy: { left: 280, top: 175, width: 1360 },
-    /** Panel-relative: Enquire CTA */
-    cta: { top: 400 },
-    /** Panel-relative cloud floor */
-    cloudFloor: { left: 0, top: 420, width: 1680, height: 200 },
-    leftProps: { left: 150, top: 280, width: 300 },
-    rightProps: { left: 1500, top: 260, width: 260 },
-    elephant: { left: 1580, top: 690, width: 135 },
-    rainbow: { left: 0, top: 20, width: 145 },
-    moon: { left: 1380, top: 35, width: 85 },
-    birds: { left: 1790, top: 105, width: 95 },
-    ufo: { left: 180, top: 895, width: 170 },
+  /** Absolute frames on the desktop artboard — full class literals for the scanner. */
+  frameClass: {
+    panel:
+      "absolute left-[7.5rem] top-[12.5rem] z-20 h-[38.75rem] w-[105rem] overflow-hidden rounded-[3rem] bg-podar-blue shadow-[0_24px_60px_-28px_rgba(6,41,83,0.35)]",
+    cloudFloor: "absolute left-0 top-[26.25rem] z-10 h-[12.5rem] w-full",
+    copy: "absolute left-[17.5rem] top-[23.4375rem] z-40 w-[85rem]",
+    cta: "absolute left-[17.5rem] top-[37.5rem] z-40 flex w-[85rem] justify-center",
+    leftProps: "absolute left-[9.375rem] top-[17.5rem] z-40 w-[18.75rem]",
+    rightProps: "absolute left-[93.75rem] top-[16.25rem] z-40 w-[16.25rem]",
+    elephant: "absolute left-[98.75rem] top-[43.125rem] z-50 w-[8.4375rem]",
+    rainbow: "absolute left-0 top-[1.25rem] z-10 w-[9.0625rem] opacity-75",
+    moon: "absolute left-[86.25rem] top-[2.1875rem] z-10 w-[5.3125rem] opacity-90",
+    birds: "absolute left-[111.875rem] top-[6.5625rem] z-10 w-[5.9375rem] opacity-80",
+    ufo: "absolute left-[11.25rem] top-[55.9375rem] z-10 w-[10.625rem] opacity-70",
   },
 
   desktop: {
-    badge: {
-      starW: 16,
-      starH: 15,
-      fontSize: 13,
-      tracking: "0.1em",
-    },
-    /** Full class so Tailwind sees both sizes (44 / 48). */
+    badgeStar: { width: 16, height: 15 },
+    badgeClass: "text-[13px] tracking-[0.1em] text-podar-accent",
     headlineClass:
       "mt-6 whitespace-nowrap text-[44px] leading-none xl:text-[48px]",
-    subhead: { size: 18, maxWidth: 640 },
-    cta: {
-      height: 56,
-      fontSize: 20,
-      paddingX: 36,
-    },
+    subheadClass: "mt-4 max-w-[40rem] text-[18px] leading-[1.7] text-podar-silver",
+    ctaClass:
+      "inline-flex h-14 items-center justify-center gap-2.5 rounded-full bg-podar-yellow px-9 font-nunito text-[20px] font-bold text-podar-blue shadow-[0px_8px_24px_-6px_rgba(248,214,79,0.45)] transition hover:brightness-95",
   },
 
-  /**
-   * Mobile + tablet (< lg). Cream band + inset blue card.
-   * Doodles stay in the same corners as before — only small spacing nudges
-   * so they don’t sit on the blue card’s rounded corner on tablet.
-   */
+  /** Soft dot wash — mask + radial gradient stay in one class literal. */
+  dotsClass:
+    "pointer-events-none absolute inset-0 opacity-[0.16] bg-[radial-gradient(circle,rgba(255,255,255,0.75)_1.15px,transparent_1.35px)] bg-[length:26px_26px] [mask-image:radial-gradient(ellipse_55%_55%_at_50%_36%,black_18%,transparent_70%)]",
+
+  /** Mobile + tablet shell (< lg). */
   fluid: {
     shellClass:
       "relative px-4 pb-10 pt-8 sm:px-6 sm:pb-12 sm:pt-10 md:px-8 md:pb-14 md:pt-12 lg:hidden",
@@ -92,7 +63,7 @@ export const ADVENTURE = {
       "pointer-events-none absolute right-1 top-16 z-0 w-9 opacity-60 sm:right-2 sm:top-[4.5rem] sm:w-11 md:right-4 md:top-[4.75rem] md:w-12",
     ufoClass:
       "pointer-events-none absolute bottom-4 left-3 z-0 w-12 opacity-60 sm:bottom-5 sm:left-5 sm:w-14 md:w-16",
-    /** Wrapper lets the elephant hang past the clipped blue card. */
+    /** Outside the clipped panel so the mascot can extend past the edge. */
     panelWrapClass:
       "relative z-10 mx-auto mt-16 mb-14 w-full max-w-[40rem] sm:mt-20 sm:mb-12 sm:max-w-[44rem] md:mt-24 md:mb-12 md:max-w-[52rem]",
     panelClass:
@@ -102,13 +73,10 @@ export const ADVENTURE = {
     headlineClass:
       "mt-4 max-w-[18ch] text-[clamp(1.5rem,6.2vw,2.25rem)] leading-[1.2] sm:mt-5 sm:max-w-[20ch] md:text-[2.35rem]",
     subheadClass:
-      "mt-3 max-w-[36ch] text-[0.9375rem] leading-[1.65] sm:mt-3.5 sm:text-base md:max-w-[42ch]",
+      "mt-3 max-w-[36ch] text-[0.9375rem] leading-[1.65] text-podar-silver sm:mt-3.5 sm:text-base md:max-w-[42ch]",
     ctaClass:
-      "mt-5 inline-flex h-12 w-full max-w-[15rem] items-center justify-center gap-2 rounded-full bg-podar-yellow px-5 font-nunito text-[15px] font-bold shadow-[0_6px_18px_-6px_rgba(248,214,79,0.45)] transition hover:brightness-95 sm:mt-6 sm:h-14 sm:max-w-[16.5rem] sm:text-base md:max-w-[17.5rem]",
-    /**
-     * Left props: mobile keeps them in the bottom scene (no text overlap).
-     * Tablet+ moves them to the TOP of the blue card.
-     */
+      "mt-5 inline-flex h-12 w-full max-w-[15rem] items-center justify-center gap-2 rounded-full bg-podar-yellow px-5 font-nunito text-[15px] font-bold text-podar-blue shadow-[0_6px_18px_-6px_rgba(248,214,79,0.45)] transition hover:brightness-95 sm:mt-6 sm:h-14 sm:max-w-[16.5rem] sm:text-base md:max-w-[17.5rem]",
+    /** Mobile: bottom of scene. Tablet+: top of panel (avoids copy overlap). */
     leftPropsMobileClass:
       "pointer-events-none absolute bottom-0 left-0 z-10 h-[95%] w-auto max-w-[52%] object-contain object-bottom sm:hidden",
     leftPropsTabletClass:
@@ -117,13 +85,9 @@ export const ADVENTURE = {
       "pointer-events-none absolute right-0 top-6 z-[15] hidden w-[22%] max-w-[5.5rem] h-auto object-contain object-top opacity-90 sm:block sm:right-1 sm:top-8 sm:max-w-[6.5rem] md:right-2 md:top-10 md:max-w-[7.5rem]",
     sceneClass:
       "relative isolate z-10 h-[11.5rem] w-full shrink-0 overflow-hidden bg-podar-blue min-[475px]:h-[14rem] md:h-[17rem]",
-    /**
-     * Edge-to-edge cloud, clipped by the panel radius — no cream corner gaps.
-     * Below 475px: cover. From 475px: fill (avoids flat-cut peaks).
-     */
+    /** Cover on narrow; fill from 475px so the floor meets the panel edges. */
     cloudClass:
       "pointer-events-none absolute inset-x-0 bottom-0 z-0 h-[62%] w-full object-cover object-bottom min-[475px]:h-[78%] min-[475px]:object-fill md:h-[82%]",
-    /** Sits on the blue card’s bottom border (right), hangs over onto cream. */
     elephantClass:
       "pointer-events-none absolute bottom-0 right-0 z-20 w-[26%] max-w-[5.5rem] translate-y-[28%] h-auto object-contain sm:right-1 sm:max-w-[6rem] md:right-2 md:w-[22%] md:max-w-[6.75rem]",
   },
