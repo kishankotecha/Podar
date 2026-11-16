@@ -9,7 +9,7 @@ export function TestimonialsSection() {
       {/* Soft pink background (Figma: #fdeef5 rect with heavy blur) */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(253,238,245,0)_0%,#fdeef5_28%,#fdeef5_72%,rgba(253,238,245,0)_100%)]"
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(253,238,245,0)_0%,#fdeef5_28%,#fdeef5_72%,#f7f4fb_100%)]"
       />
 
       {/* Decorations – shown on all screens, scaled down on smaller ones.
