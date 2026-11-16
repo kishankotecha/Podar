@@ -11,14 +11,20 @@ const ASSETS = {
 export const HERO = {
   assets: ASSETS,
 
-  artboard: { width: 1920, height: 1198 },
+  artboard: { width: 1920, contentHeight: 965 },
 
-  /** Absolute frames on the 1920×1198 artboard. */
+  /**
+   * Independent top/bottom spacing (in artboard-px at 1920-wide).
+   * Tweak these two numbers to control the gap above/below hero content.
+   */
+  padding: { top: 30, bottom: 30 },
+
+  /** Absolute frames relative to the content-area origin (0,0). */
   frames: {
-    copy: { left: 120, top: 201, width: 603 },
-    form: { left: 1248, top: 178, width: 540, height: 722 },
-    girl: { left: 860, top: 187, width: 338 },
-    boy: { left: 660, top: 420, width: 620 },
+    copy: { left: 120, top: 117, width: 603 },
+    form: { left: 1248, top: 94, width: 540, height: 722 },
+    girl: { left: 860, top: 103, width: 338 },
+    boy: { left: 660, top: 336, width: 620 },
   },
 
   content: {
@@ -50,14 +56,14 @@ export const HERO = {
   decor: {
     heart: {
       left: 831,
-      top: 170,
+      top: 86,
       width: 26.12,
       height: 23.95,
       src: ASSETS.heart,
     },
     cap: {
       left: 1122,
-      top: 84,
+      top: 0,
       width: 99,
       height: 84,
       rotate: -17.56,
@@ -65,21 +71,21 @@ export const HERO = {
     },
     cloudA: {
       left: 1721.21,
-      top: 90.03,
+      top: 6.03,
       width: 83.59,
       height: 50.16,
       src: ASSETS.cloud,
     },
     cloudB: {
       left: 840,
-      top: 831,
+      top: 747,
       width: 83.59,
       height: 50.16,
       src: ASSETS.cloud,
     },
     starUnderForm: {
       left: 1509.88,
-      top: 1022.94,
+      top: 938.94,
       width: 26.12,
       height: 26.12,
       src: ASSETS.star,
