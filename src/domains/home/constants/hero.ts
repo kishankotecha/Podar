@@ -11,14 +11,14 @@ const ASSETS = {
 export const HERO = {
   assets: ASSETS,
 
-  artboard: { width: 1920, height: 1318 },
+  artboard: { width: 1920, height: 1198 },
 
-  /** Absolute frames on the 1920×1318 artboard. */
+  /** Absolute frames on the 1920×1198 artboard. */
   frames: {
-    copy: { left: 120, top: 321, width: 603 },
-    form: { left: 1248, top: 298, width: 540, height: 722 },
-    girl: { left: 860, top: 307, width: 338 },
-    boy: { left: 660, top: 540, width: 620 },
+    copy: { left: 120, top: 201, width: 603 },
+    form: { left: 1248, top: 178, width: 540, height: 722 },
+    girl: { left: 860, top: 187, width: 338 },
+    boy: { left: 660, top: 420, width: 620 },
   },
 
   content: {
@@ -50,14 +50,14 @@ export const HERO = {
   decor: {
     heart: {
       left: 831,
-      top: 290,
+      top: 170,
       width: 26.12,
       height: 23.95,
       src: ASSETS.heart,
     },
     cap: {
       left: 1122,
-      top: 204,
+      top: 84,
       width: 99,
       height: 84,
       rotate: -17.56,
@@ -65,21 +65,21 @@ export const HERO = {
     },
     cloudA: {
       left: 1721.21,
-      top: 210.03,
+      top: 90.03,
       width: 83.59,
       height: 50.16,
       src: ASSETS.cloud,
     },
     cloudB: {
       left: 840,
-      top: 951,
+      top: 831,
       width: 83.59,
       height: 50.16,
       src: ASSETS.cloud,
     },
     starUnderForm: {
       left: 1509.88,
-      top: 1142.94,
+      top: 1022.94,
       width: 26.12,
       height: 26.12,
       src: ASSETS.star,
