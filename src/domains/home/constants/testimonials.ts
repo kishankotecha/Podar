@@ -24,7 +24,7 @@ export const TESTIMONIALS: Testimonial[] = [
     quote:
       "The story-based learning has made our son so curious. Every evening he comes home with a new question and a new story to tell us.",
     name: "Soniya Mehta",
-    childInfo: "Vihaan, Nursery",
+    childInfo: "Riya, Nursery",
     avatar: "/images/podar/mother_daughter_1_48x48.png",
     rating: 5,
   },
