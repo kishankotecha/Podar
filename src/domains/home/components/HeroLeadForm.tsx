@@ -82,9 +82,34 @@ export function HeroLeadForm({ className }: Props) {
             <input
               name="phone"
               type="tel"
+              inputMode="numeric"
+              pattern="[0-9]*"
+              maxLength={10}
               required
               autoComplete="tel"
               placeholder={content.fields.phone}
+              onKeyDown={(e) => {
+                if (
+                  [
+                    "Backspace",
+                    "Delete",
+                    "Tab",
+                    "Escape",
+                    "Enter",
+                    "ArrowLeft",
+                    "ArrowRight",
+                  ].includes(e.key) ||
+                  (e.ctrlKey || e.metaKey)
+                ) {
+                  return;
+                }
+                if (!/^[0-9]$/.test(e.key)) {
+                  e.preventDefault();
+                }
+              }}
+              onInput={(e) => {
+                e.currentTarget.value = e.currentTarget.value.replace(/\D/g, "");
+              }}
               className={fieldClass}
             />
             <input
@@ -125,7 +150,7 @@ export function HeroLeadForm({ className }: Props) {
               {open ? (
                 <ul
                   role="listbox"
-                  className="absolute left-0 right-0 top-[calc(100%+8px)] z-50 max-h-[260px] overflow-auto rounded-[28px] border border-podar-border bg-white py-2 shadow-[0_16px_40px_rgba(6,41,83,0.14)]"
+                  className="absolute left-0 right-0 bottom-[calc(100%+8px)] lg:bottom-auto lg:top-[calc(100%+8px)] z-50 max-h-[220px] sm:max-h-[260px] overflow-y-auto rounded-[24px] sm:rounded-[28px] border border-podar-border bg-white py-2 shadow-[0_-12px_36px_rgba(6,41,83,0.16)] lg:shadow-[0_16px_40px_rgba(6,41,83,0.14)]"
                 >
                   {HERO.locations.map((loc) => (
                     <li key={loc}>
@@ -133,9 +158,9 @@ export function HeroLeadForm({ className }: Props) {
                         type="button"
                         role="option"
                         aria-selected={location === loc}
-                        className={`flex w-full px-7 py-2.5 text-left font-nunito text-[18px] font-medium transition hover:bg-podar-soft ${
+                        className={`flex w-full px-5 sm:px-7 py-2.5 text-left font-nunito text-base sm:text-[18px] font-medium transition hover:bg-podar-soft ${
                           location === loc
-                            ? "bg-podar-soft text-podar-blue"
+                            ? "bg-podar-soft text-podar-blue font-semibold"
                             : "text-[#555]"
                         }`}
                         onClick={() => {

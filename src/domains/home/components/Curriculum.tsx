@@ -6,8 +6,9 @@ import { fredoka, nunito } from "../../../lib/fonts";
 export default function Curriculum() {
   return (
     <section
+      id="learning"
       aria-labelledby="curriculum-title"
-      className={`${nunito.className} relative isolate flex w-full flex-col items-center overflow-hidden bg-white px-5 pt-20 pb-18 sm:px-8 lg:px-16 lg:pt-33.5 lg:pb-38`}
+      className={`${nunito.className} relative isolate flex w-full flex-col items-center overflow-hidden bg-white px-5 pt-20 pb-18 sm:px-8 lg:px-16 lg:pt-33.5 lg:pb-38 scroll-mt-16 lg:scroll-mt-24`}
     >
       {decorations.map(({ name, width, height, position }) => (
         <Image

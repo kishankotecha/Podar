@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { HERO } from "@/domains/home/constants/hero";
+import { NAV_ITEMS, NAVBAR_CONFIG } from "@/shared/constants/navigation";
 
 function PodarLogo() {
   return (
@@ -41,7 +41,7 @@ export function SiteHeader() {
   return (
     <header
       className="relative z-30 w-full"
-      style={{ background: HERO.navBg }}
+      style={{ background: NAVBAR_CONFIG.bgColor }}
     >
       <div className="mx-auto flex h-[88px] max-w-[1920px] items-center justify-between px-6 md:px-10 lg:h-[116px] lg:px-[120px]">
         <Link href="/" className="-mt-2 lg:-mt-6">
@@ -49,7 +49,7 @@ export function SiteHeader() {
         </Link>
 
         <nav className="hidden items-center gap-8 xl:gap-[46px] lg:flex">
-          {HERO.navLinks.map((item) => (
+          {NAV_ITEMS.map((item) => (
             <Link
               key={item.label}
               href={item.href}

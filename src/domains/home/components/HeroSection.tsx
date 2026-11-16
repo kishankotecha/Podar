@@ -1,9 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { HeroLeadForm } from "@/domains/home/components/HeroLeadForm";
 import { HeroDecor } from "@/domains/home/components/HeroDecor";
 import { HeroArtboard } from "@/domains/home/components/HeroArtboard";
 import { HERO } from "@/domains/home/constants/hero";
+import { scrollToLeadForm } from "@/domains/home/utils/scroll";
 
 const { content, assets, frames } = HERO;
 
@@ -26,7 +29,8 @@ function HeroCopy() {
       </div>
 
       <Link
-        href={content.ctaHref}
+        href="#hero-lead-form-desktop"
+        onClick={scrollToLeadForm}
         className="mt-8 inline-flex h-16 items-center gap-2.5 rounded-full bg-podar-yellow px-8 font-nunito text-[21px] font-bold leading-7 text-podar-cta shadow-[0px_8px_24px_-6px_rgba(248,214,79,0.45)] transition hover:brightness-95"
       >
         {content.cta}
@@ -124,6 +128,7 @@ function HeroDesktop() {
       </div>
 
       <div
+        id="hero-lead-form-desktop"
         className="absolute z-30"
         style={{
           left: frames.form.left,
@@ -150,15 +155,11 @@ function HeroMobile() {
           {content.subhead}
         </p>
         <Link
-          href={content.ctaHref}
-          className="inline-flex max-w-[15.5rem] flex-col items-center justify-center rounded-full bg-podar-yellow px-5 py-3 text-center font-nunito text-[13px] font-bold leading-snug text-podar-cta shadow-[0_6px_18px_-6px_rgba(248,214,79,0.45)] sm:max-w-none sm:h-14 sm:flex-row sm:gap-2 sm:px-7 sm:py-0 sm:text-lg sm:leading-none"
+          href="#hero-lead-form-mobile"
+          onClick={scrollToLeadForm}
+          className="inline-flex items-center justify-center gap-1.5 rounded-full bg-podar-yellow px-5 py-3.5 text-center font-nunito text-[13px] font-bold leading-none text-podar-cta shadow-[0_6px_18px_-6px_rgba(248,214,79,0.45)] whitespace-nowrap transition hover:brightness-95 active:scale-95 sm:h-14 sm:gap-2 sm:px-7 sm:py-0 sm:text-lg"
         >
-          <span className="sm:hidden">
-            {content.ctaMobileLines[0]}
-            <br />
-            {content.ctaMobileLines[1]}
-          </span>
-          <span className="hidden sm:inline">{content.cta} →</span>
+          <span>{content.cta} →</span>
         </Link>
         <p className="mx-auto flex w-fit max-w-[17rem] items-start gap-2 text-left font-nunito text-sm font-semibold leading-snug text-podar-mist sm:max-w-sm sm:text-base">
           <Image
@@ -198,7 +199,9 @@ function HeroMobile() {
         />
       </div>
 
-      <HeroLeadForm className="mx-auto w-[calc(100%-1.5rem)] max-w-sm sm:w-full sm:max-w-md md:max-w-xl" />
+      <div id="hero-lead-form-mobile" className="w-full scroll-mt-24">
+        <HeroLeadForm className="mx-auto w-[calc(100%-1.5rem)] max-w-sm sm:w-full sm:max-w-md md:max-w-xl" />
+      </div>
     </div>
   );
 }

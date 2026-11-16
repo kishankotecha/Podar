@@ -5,8 +5,9 @@ import { fredoka, nunito } from "../../../lib/fonts";
 export default function PrepJourney() {
   return (
     <section
+      id="campus-life"
       aria-labelledby="prep-journey-title"
-      className={`${nunito.className} relative isolate flex w-full flex-col items-center overflow-hidden bg-linear-to-b from-[#fefffd] via-[#EEF8E8] to-[#F3F8EC] pt-28 pb-16 text-center text-[#767E88] backdrop-blur-[21.3375rem] md:pt-36 lg:min-h-250 lg:pt-64`}
+      className={`${nunito.className} relative isolate flex w-full flex-col items-center overflow-hidden bg-linear-to-b from-[#fefffd] via-[#EEF8E8] to-[#F3F8EC] pt-28 pb-16 text-center text-[#767E88] backdrop-blur-[21.3375rem] md:pt-36 lg:min-h-250 lg:pt-64 scroll-mt-16 lg:scroll-mt-24`}
     >
       {/* The PNG exports include the tree's rotation and the sun's crop and opacity. */}
       <Image

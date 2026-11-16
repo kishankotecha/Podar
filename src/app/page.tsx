@@ -11,7 +11,6 @@ import { HeroSection } from "@/domains/home/components/HeroSection";
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col bg-white">
-      {/* Order follows the Figma page; Adventure sits last so Footer follows it */}
       <HeroSection />
       <WhereItBegins />
       <AdvantageSection />

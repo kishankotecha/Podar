@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties } from "react";
@@ -7,6 +9,7 @@ import {
   type AdventureAsset,
 } from "@/domains/home/constants/adventure";
 import { cn } from "@/lib/utils";
+import { scrollToLeadForm } from "@/domains/home/utils/scroll";
 
 const { content, assets, frames, artboard, desktop, fluid, padding, dots, colors } =
   ADVENTURE;
@@ -55,7 +58,8 @@ function EnquireCta({ variant }: { variant: "desktop" | "fluid" }) {
   if (variant === "fluid") {
     return (
       <Link
-        href={content.ctaHref}
+        href="#hero-lead-form-mobile"
+        onClick={scrollToLeadForm}
         className={fluid.ctaClass}
         style={{ color: colors.ctaText }}
       >
@@ -67,7 +71,8 @@ function EnquireCta({ variant }: { variant: "desktop" | "fluid" }) {
 
   return (
     <Link
-      href={content.ctaHref}
+      href="#hero-lead-form-desktop"
+      onClick={scrollToLeadForm}
       className={ctaBaseClass}
       style={{
         color: colors.ctaText,
@@ -380,8 +385,8 @@ function AdventureFluid() {
 export function AdventureSection() {
   return (
     <section
-      id="adventure"
-      className="relative w-full overflow-hidden bg-podar-cream"
+      id="admissions"
+      className="relative w-full overflow-hidden bg-podar-cream scroll-mt-16 lg:scroll-mt-24"
       style={{
         paddingTop: padding.top,
         paddingBottom: padding.bottom,

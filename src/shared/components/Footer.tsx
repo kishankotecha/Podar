@@ -1,8 +1,11 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FiFacebook, FiInstagram, FiLinkedin, FiYoutube } from "react-icons/fi";
 import { NAV_ITEMS, NAVBAR_CONFIG } from "../constants/navigation";
+import { smoothScrollTo } from "@/domains/home/utils/scroll";
 
 const SOCIALS = [
   { label: "Facebook", href: "#", Icon: FiFacebook },
@@ -55,6 +58,7 @@ export const Footer: React.FC = () => {
             <div className="sm:col-span-2 md:col-span-1">
               <Link
                 href="/"
+                onClick={(e) => smoothScrollTo("/", e)}
                 aria-label="Podar Prep Home"
                 className="inline-flex items-center gap-3 rounded-full outline-none focus-visible:ring-2 focus-visible:ring-[#F8D64F] lg:gap-[clamp(10px,0.94vw,18px)]"
               >
@@ -102,7 +106,8 @@ export const Footer: React.FC = () => {
                   <li key={item.label}>
                     <Link
                       href={item.href}
-                      className="inline-block text-[15px] leading-none text-white/45 transition-colors duration-200 hover:text-[#F8D64F] sm:text-[16px] lg:text-[length:clamp(15px,1.04vw,20px)]"
+                      onClick={(e) => smoothScrollTo(item.href, e)}
+                      className="inline-block text-[15px] leading-none text-white/45 transition-colors duration-200 hover:text-[#F8D64F] sm:text-[16px] lg:text-[length:clamp(15px,1.04vw,20px)] cursor-pointer"
                     >
                       {item.label}
                     </Link>

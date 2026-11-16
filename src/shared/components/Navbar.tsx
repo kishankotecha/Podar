@@ -4,6 +4,7 @@ import React, { useEffect, useId, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { NAV_ITEMS, NAVBAR_CONFIG } from "../constants/navigation";
+import { scrollToLeadForm, smoothScrollTo } from "@/domains/home/utils/scroll";
 
 interface NavbarProps {
   activeItem?: string;
@@ -69,7 +70,10 @@ export const Navbar: React.FC<NavbarProps> = ({ activeItem = "Home" }) => {
             <div className="relative h-full w-[68px] md:w-[clamp(84px,8.333vw,160px)] justify-self-start">
               <Link
                 href="/"
-                onClick={() => setOpen(false)}
+                onClick={(e) => {
+                  setOpen(false);
+                  smoothScrollTo("/", e);
+                }}
                 className="absolute top-0 md:top-[clamp(4px,0.52vw,10px)] left-0 z-30 block w-[68px] h-[68px] md:w-[clamp(84px,8.333vw,160px)] md:h-[clamp(84px,8.333vw,160px)] rounded-full outline-none focus-visible:ring-2 focus-visible:ring-[#F8D64F] select-none"
                 aria-label="Podar Prep Home"
               >
@@ -93,6 +97,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeItem = "Home" }) => {
                 <Link
                   key={item.label}
                   href={item.href}
+                  onClick={(e) => smoothScrollTo(item.href, e)}
                   className={`text-[length:clamp(14px,1.0417vw,20px)] leading-none whitespace-nowrap text-white transition-colors duration-200 hover:text-[#F8D64F] font-normal`}
                 >
                   {item.label}
@@ -103,7 +108,8 @@ export const Navbar: React.FC<NavbarProps> = ({ activeItem = "Home" }) => {
             {/* Desktop CTA */}
             <div className="hidden md:flex items-center justify-self-end">
               <Link
-                href={NAVBAR_CONFIG.buttonHref}
+                href="#hero-lead-form-desktop"
+                onClick={scrollToLeadForm}
                 className="inline-flex items-center justify-center h-[clamp(34px,2.344vw,45px)] min-w-[clamp(104px,9.01vw,173px)] px-[clamp(18px,1.98vw,38px)] rounded-full bg-[#F8D64F] text-[#14337C] text-[length:clamp(13px,1.0417vw,20px)] leading-none font-bold shadow-sm hover:brightness-95 active:scale-95 transition-all duration-150 outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
                 {NAVBAR_CONFIG.buttonLabel}
@@ -113,8 +119,11 @@ export const Navbar: React.FC<NavbarProps> = ({ activeItem = "Home" }) => {
             {/* Mobile: CTA + animated hamburger */}
             <div className="flex items-center gap-2 md:hidden">
               <Link
-                href={NAVBAR_CONFIG.buttonHref}
-                onClick={() => setOpen(false)}
+                href="#hero-lead-form-mobile"
+                onClick={(e) => {
+                  setOpen(false);
+                  scrollToLeadForm(e);
+                }}
                 className="inline-flex items-center h-[32px] px-4 rounded-full bg-[#F8D64F] text-[#14337C] text-[13px] leading-none font-bold shadow-sm active:scale-95 transition-transform duration-150 outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
                 {NAVBAR_CONFIG.buttonLabel}
@@ -168,7 +177,10 @@ export const Navbar: React.FC<NavbarProps> = ({ activeItem = "Home" }) => {
                   <Link
                     key={item.label}
                     href={item.href}
-                    onClick={() => setOpen(false)}
+                    onClick={(e) => {
+                      setOpen(false);
+                      smoothScrollTo(item.href, e);
+                    }}
                     className={`flex items-center justify-between py-3.5 text-[17px] leading-snug border-b border-white/10 last:border-b-0 transition-all duration-300 ease-out motion-reduce:transition-none hover:text-[#F8D64F] font-normal ${
                       open
                         ? `opacity-100 translate-y-0 ${STAGGER[i] ?? "delay-[330ms]"}`
