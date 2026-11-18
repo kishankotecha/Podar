@@ -17,11 +17,11 @@ export default function Curriculum() {
           alt=""
           width={width}
           height={height}
-          className={`pointer-events-none absolute -z-10 h-auto ${position}`}
+          className={`pointer-events-none absolute z-0 h-auto ${position}`}
         />
       ))}
 
-      <header className="flex flex-col items-center text-center">
+      <header className="relative z-10 flex flex-col items-center text-center">
         <p className="inline-flex items-center gap-2 rounded-full border border-sky-200 px-3 py-1 text-[0.625rem] leading-normal font-bold text-[#20487D] uppercase">
           <Image src="/section/star.svg" alt="" width={15} height={15} />
           Our Curriculum
@@ -35,7 +35,7 @@ export default function Curriculum() {
         </h2>
       </header>
 
-      <ol className="grid w-full max-w-358.25 grid-cols-1 items-start gap-5 pt-10 md:grid-cols-2 lg:pt-16 xl:grid-cols-[1fr_1.31fr_1fr] xl:gap-x-7.25 xl:gap-y-3">
+      <ol className="relative z-10 grid w-full max-w-358.25 grid-cols-1 items-start gap-5 pt-10 md:grid-cols-2 lg:pt-16 xl:grid-cols-[1fr_1.31fr_1fr] xl:gap-x-7.25 xl:gap-y-3">
         {curriculumCards.map(({ title, subtitle, description, theme, offset, height }, index) => {
           const colors = themes[theme];
           const isNepCard = theme === "blue";

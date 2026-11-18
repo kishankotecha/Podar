@@ -7,7 +7,7 @@ export default function PrepJourney() {
     <section
       id="campus-life"
       aria-labelledby="prep-journey-title"
-      className={`${nunito.className} relative isolate flex w-full flex-col items-center overflow-hidden bg-linear-to-b from-[#fefffd] via-[#EEF8E8] to-[#F3F8EC] pt-28 pb-16 text-center text-[#767E88] backdrop-blur-[21.3375rem] md:pt-36 lg:min-h-250 lg:pt-64 scroll-mt-16 lg:scroll-mt-24`}
+      className={`${nunito.className} relative isolate flex w-full flex-col items-center overflow-hidden bg-linear-to-b from-[#fefffd] via-[#EEF8E8] to-[#F3F8EC] pt-28 pb-16 text-center text-[#767E88] backdrop-blur-[21.3375rem] md:pt-36 lg:min-h-230 lg:pt-64 scroll-mt-16 lg:scroll-mt-24`}
     >
       {/* The PNG exports include the tree's rotation and the sun's crop and opacity. */}
       <Image
@@ -15,14 +15,14 @@ export default function PrepJourney() {
         alt=""
         width={116}
         height={150}
-        className="pointer-events-none absolute top-40 left-1 -z-10 h-auto w-12 md:top-30 md:left-2 md:w-16 lg:top-1/10 lg:w-1/16 lg:max-w-29 2xl:top-47 2xl:left-3"
+        className="pointer-events-none absolute top-40 left-1 z-0 h-auto w-12 md:top-30 md:left-2 md:w-16 lg:top-1/10 lg:w-1/16 lg:max-w-29 2xl:top-47 2xl:left-3"
       />
       <Image
         src="/section/sun.png"
         alt=""
         width={122}
         height={210}
-        className="pointer-events-none absolute top-35 right-0 -z-10 h-auto w-12 md:top-25 md:w-16 lg:top-24 lg:w-1/16 lg:max-w-30.5 2xl:top-40"
+        className="pointer-events-none absolute top-35 right-0 z-0 h-auto w-12 md:top-25 md:w-16 lg:top-24 lg:w-1/16 lg:max-w-30.5 2xl:top-40"
       />
       <Image
         src="/section/elephant.png"
@@ -30,10 +30,10 @@ export default function PrepJourney() {
         width={176}
         height={253}
         sizes="(min-width: 120rem) 11rem, (min-width: 64rem) 9vw, (min-width: 48rem) 6rem, 4.5rem"
-        className="pointer-events-none absolute top-0 right-4 h-auto w-18 md:right-1/15 md:w-24 lg:w-1/11 lg:max-w-44"
+        className="pointer-events-none absolute top-0 right-4 z-0 h-auto w-18 md:right-1/15 md:w-24 lg:w-1/11 lg:max-w-44"
       />
 
-      <div className="flex w-full max-w-412 flex-col items-center px-6 lg:w-7/8 lg:translate-x-3.5 lg:px-0">
+      <div className="relative z-10 flex w-full max-w-412 flex-col items-center px-6 lg:w-7/8 lg:translate-x-3.5 lg:px-0">
         <header className="flex w-full max-w-4xl flex-col items-center">
           <p className="relative inline-flex items-center gap-2 rounded-full border border-sky-200 bg-transparent px-3 py-1 text-[0.625rem] leading-normal font-bold text-[#20487D] uppercase">
             <Image src="/section/star.svg" alt="" width={15} height={15} />
@@ -75,11 +75,12 @@ export default function PrepJourney() {
               aria-hidden="true"
               viewBox="0 0 100 1000"
               preserveAspectRatio="none"
-              className="pointer-events-none absolute top-8 left-1/2 -z-10 block h-[calc(100%-11rem)] w-16 -translate-x-1/2 fill-none stroke-[#96BC7F] lg:hidden"
+              className="pointer-events-none absolute top-8 left-1/2 z-0 block h-[calc(100%-11rem)] w-100 sm:w-150 -translate-x-1/2 fill-none stroke-[#96BC7F] lg:hidden"
             >
               <path
-                d="M 50 0 C 90 80, 90 170, 50 250 C 10 330, 10 420, 50 500 C 90 580, 90 670, 50 750 C 10 830, 10 920, 50 1000"
-                strokeDasharray="8 10"
+                d="M 50 0 C 70 50, 100 100, 90 160 C 82 200, 62 238, 50 250 C 32 275, 5 305, 10 375 C 15 430, 38 475, 50 500 C 70 530, 98 560, 90 625 C 84 680, 62 730, 50 750 C 32 765, 5 805, 10 885 C 15 940, 38 980, 50 1000"
+                strokeDasharray="9 10"
+                strokeWidth="2"
                 vectorEffect="non-scaling-stroke"
               />
             </svg>
@@ -87,7 +88,7 @@ export default function PrepJourney() {
             {journeySteps.map(({ id, title, description, icon }, index) => (
               <li
                 key={id}
-                className="group flex w-full flex-col items-center lg:last:col-span-1"
+                className="group relative z-10 flex w-full flex-col items-center lg:last:col-span-1"
               >
                 <div className="relative grid size-16 place-items-center rounded-2xl bg-white ring-1 ring-[#96BC7F]/20">
                   <Image {...icon} alt="" />
