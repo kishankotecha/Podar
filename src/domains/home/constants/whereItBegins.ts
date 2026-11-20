@@ -29,5 +29,5 @@ export const WHERE_IT_BEGINS_FEATURES = [
   { title: "Communication", icon: "/whereitbegins/b13.png" },
   { title: "Independence", icon: "/whereitbegins/b14.png" },
   { title: "Social Development", icon: "/whereitbegins/b15.png" },
-  { title: "Learning Habits", icon: "/whereitbegins/b16.png" },
+  { title: "Physical development", icon: "/whereitbegins/b16.png" },
 ] as const;
