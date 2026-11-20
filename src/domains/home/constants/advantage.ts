@@ -25,7 +25,7 @@ export const ADVANTAGES: Advantage[] = [
     id: "glocal-curriculum",
     number: "01",
     title: "Glocal Curriculum",
-    description: "Encouraging curiosity and a love for discovery in every child.",
+    description: "Bringing global learning approaches together with local culture, values and everyday experiences.",
     icon: FiSearch,
     iconSrc: "/images/podar/icon-glocal.png",
     theme: "blue",
